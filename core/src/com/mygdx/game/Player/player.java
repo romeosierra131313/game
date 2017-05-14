@@ -9,6 +9,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.ai.btree.BehaviorTree;
+import com.mygdx.game.Constants;
+import com.mygdx.game.Constants.playerlocation;
+import com.mygdx.game.Constants.playermovingdir;
+import com.mygdx.game.Constants.playerstate;
 
 /**
  *
@@ -21,13 +25,16 @@ public class player extends character  {
         public  Boolean left= false;
         public  Boolean right= false;
         public  BehaviorTree<player> btree;
-          
+        public playerlocation playerlocation; 
+        public playerstate pstate;
+        public playermovingdir pdirY;
+        public playermovingdir pdirX;
           
        public player(){
            
                   x = 400;
                   y = 260;
-                 
+                  
                   t = new Texture(Gdx.files.internal("player.png"));
                   definetextureregions(t);
                   

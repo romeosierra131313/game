@@ -17,11 +17,13 @@ public class Paths {
       public ArrayList<Vector2> currentPath;
       public final ArrayList<Vector2> pathmakitojinku;
       public final ArrayList<Vector2> pathjinkutomaki;
+      
       private final String pmtj ="pathmakitojinku";
     
       public Paths(){
       
         currentPath = new ArrayList();
+        
           
         pathmakitojinku = new ArrayList();
         pathmakitojinku.add(new Vector2(434,294));

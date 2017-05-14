@@ -22,7 +22,7 @@ public class ttown3 extends town{
     townxy.add(x, y);
     townt = new Texture(Gdx.files.internal("town.jpg"));
     towns = new Sprite(townt);
-    r.set(x,y, 120, 50);
+    r.set(x,y, 64, 64);
     }
    
     
