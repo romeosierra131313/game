@@ -1,0 +1,20 @@
+#
+# player tree
+#
+
+# Alias definitions
+import Up:"com.mygdx.game.Player.WalkUpTask"
+import Right:"com.mygdx.game.Player.WalkRightTask"
+import Left:"com.mygdx.game.Player.WalkLeftTask"
+import Down:"com.mygdx.game.Player.WalkDownTask"
+
+#Tree definition
+
+  sequence
+    
+    Up
+    Right
+    
+
+
+ 
