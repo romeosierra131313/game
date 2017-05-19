@@ -20,7 +20,7 @@ public class Month{
          public int getcurrentDate(){
       return currentDate;
    }
-   public void currentDate(int currentDate ){
+   public void setcurrentDate(int currentDate ){
       this.currentDate = currentDate;
    }
 }
