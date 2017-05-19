@@ -1,0 +1,59 @@
+public class Calendar implements calendarListener{
+      month1 month1;
+      month2 month2;
+      BitmapFont bf;
+      HashMap<int,month> calendar;
+      int currentMonth = 1;
+      String currentMonthString;
+      
+      
+      public calendar(){
+          month1 = new month1();
+          month2 = new month2();
+          
+          calendar = new HashMap<int,month>();
+          calendar.put(1,month1);
+          calendar.put(2,month2);
+          
+          bf = new BitmapFont();
+          
+          
+      }
+      public void render(SpriteBatch sb){
+           sb.draw(bf,monthString(currentMonth,getcurrentDate()),
+                    Gdx.graphics.getWidth - 200,Gdx.graphics.getHeight - 50);
+      
+      
+      }
+      public void daypassed(calendarEvent e){
+           switch(Month){
+                case month1 : month1.setcurrentDate(getcurrentDate() ++);
+                break;
+                case month2 : month2.setcurrentDate(getcurrentDate() ++);
+                break;
+           }
+      }
+      public void monthpassed(calendarEvent e){
+            if(currentMonth < 2){
+               calendar.get(currentMonth).setcurrentDate(1);
+               currentMonth++;
+               
+             }else{
+               calendar.get(currentMonth).setcurrentDate(1);
+               currentmonth = 1;
+              }
+             
+      }
+      
+      private String monthString(int currentMonth,int currentDate){
+           currentMonthString = calendar.get(1).getName + Interger.toString(currentDate);
+      }
+      private void setcurrentDate(){
+            this.currentDate =  calendar.get(currentMonth).getcurrentDate();
+      }
+      private int getcurrentDate(){
+            return currentDate;
+      }
+      
+
+}
