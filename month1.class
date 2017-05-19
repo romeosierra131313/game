@@ -1,0 +1,11 @@
+public class month1 extends Month{
+    private final String month1name = "month1";
+    private final int month1length = 20;
+   
+   public month1(){
+        setName(month1name);
+        setlength(month1length);
+    
+    }
+
+}
