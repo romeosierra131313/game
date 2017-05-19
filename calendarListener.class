@@ -1,0 +1,5 @@
+public Interface calendarListener{
+    public void daypassed(calendarEvent e);
+    public void monthpassed(calendarEvent e);
+
+}
