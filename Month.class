@@ -1,0 +1,18 @@
+public class Month{
+      private String Name;
+      private int length;
+   public Month(){}
+   
+   public String getName(){
+      return Name;
+   }
+   public void SetName(String g){
+      this.Name = g;
+   }
+      public int getlength(){
+      return length;
+   }
+   public void SetName(int length ){
+      this.length = length;
+   }
+}
