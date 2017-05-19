@@ -1,0 +1,16 @@
+import com.Mygdx.Game.core.Player.player;
+
+public class calendarEvent{
+        player p;
+        public calendarEvent(player p){
+        this.p = p;    
+        
+        }
+        
+        public player getsource(){
+           return p;
+        
+        }
+
+
+}
