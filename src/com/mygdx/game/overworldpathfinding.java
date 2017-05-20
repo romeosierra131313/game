@@ -52,7 +52,6 @@ public class overworldpathfinding {
       public void calculatePaths() {
         setdiff();
        
-          System.out.println("current pre" + current);
        
         //is destination NSEW of departure
            if(departure.x < destination.x && diff.x >= diff.y){
@@ -84,9 +83,10 @@ public class overworldpathfinding {
                            if( p.pdirY ==  p.pdirY.north 
                                    && templocation.y > departure.y
                                    && templocation.y < destination.y 
-                                   && Math.abs(templocation.y- departure.y  ) <= 50 
-                                   && Math.abs(templocation.x- departure.x  ) <= 50 
-                                   && Math.abs(destination.y - templocation.y) < diff.y){
+                                   && Math.abs(templocation.y- departure.y  ) <= 350 
+                                   && Math.abs(templocation.x- departure.x  ) <= 350
+                                   && Math.abs(destination.y - templocation.y) < diff.y
+                                   && Math.abs(destination.x - templocation.x) < diff.x){
                              current.add(templocation);
                              System.out.println("added " + templocation +"/n");
                            //  diff.y = Math.abs(templocation.y - destination.y);
@@ -95,9 +95,10 @@ public class overworldpathfinding {
                            if( p.pdirY ==  p.pdirY.south 
                                    && departure.y > templocation.y 
                                    && templocation.y > destination.y 
-                                   && Math.abs(departure.y - templocation.y) <= 50
-                                    && Math.abs(templocation.x- departure.x) <= 50 
-                                   && Math.abs(templocation.y - destination.y) < diff.y){
+                                   && Math.abs(departure.y - templocation.y) <= 350
+                                    && Math.abs(templocation.x- departure.x) <= 350 
+                                   && Math.abs(templocation.y - destination.y) < diff.y
+                                   && Math.abs(destination.x - templocation.x) < diff.x){
                              current.add(templocation);
                              System.out.println("added " + templocation +"/f");
                          //  diff.y = Math.abs(templocation.y - destination.y);
@@ -106,9 +107,10 @@ public class overworldpathfinding {
                            if( p.pdirX ==  p.pdirX.east  
                                    && departure.x < templocation.x 
                                    && templocation.x < destination.x 
-                                   &&  Math.abs(templocation.x-departure.x) <= 50
-                                   && Math.abs(templocation.y- departure.y  ) <= 50 
-                                   && Math.abs(destination.x-templocation.x) < diff.x ){
+                                   &&  Math.abs(templocation.x-departure.x) <= 350
+                                   && Math.abs(templocation.y- departure.y  ) <= 350 
+                                   && Math.abs(destination.x-templocation.x) < diff.x 
+                                   && Math.abs(destination.y - templocation.y) < diff.y){
                              current.add(templocation);
                              System.out.println("added " + templocation +"/n");
                         //   diff.x = Math.abs(templocation.x - destination.x);
@@ -117,9 +119,10 @@ public class overworldpathfinding {
                            if( p.pdirX ==  p.pdirX.west  
                                    && templocation.x > departure.x 
                                    && templocation.x< destination.x 
-                                   && Math.abs(departure.x - templocation.x) <= 50
-                                   && Math.abs(templocation.y- departure.y  ) <= 50 
-                                   && Math.abs(templocation.x - destination.x) < diff.x){
+                                   && Math.abs(departure.x - templocation.x) <= 350
+                                   && Math.abs(templocation.y- departure.y  ) <= 350 
+                                   && Math.abs(templocation.x - destination.x) < diff.x
+                                   && Math.abs(destination.y - templocation.y) < diff.y){
                              current.add(templocation);
                              System.out.println("added " + templocation +"/q");
                        //    diff.x = Math.abs(templocation.x - destination.x);

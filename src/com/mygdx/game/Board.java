@@ -95,7 +95,8 @@ public class Board implements storyListener {
 
     @Override
     public void progress(storyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       System.out.println("i responded to an event");   
+    
     }
 
     @Override

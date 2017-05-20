@@ -32,12 +32,14 @@ import com.mygdx.game.towns.ttown4;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
  * @author Stefan
  */
-public class overworld {
+public class overworld implements calendarListener {
         public TiledMap overworld;
         OrthographicCamera cam;
         Stage stage;
@@ -47,6 +49,8 @@ public class overworld {
         
         public player p;
         public overworldpathfinding owpathfinding;
+        public Calendar c;
+        private Set<calendarListener> listeners;
         public int currentWay = 0;
         public int totalWay;
         public float movetime;
@@ -97,6 +101,9 @@ public class overworld {
         rec = new Rectangle();
        
         createtowns();
+        c = new Calendar();
+        listeners = new HashSet<calendarListener>();
+        listeners.add(c);
        playerlocation = playerlocation.Maki;
         createplayer();
         worldmenu = new worldmenu(stage,skin,im,p,owpathfinding.current,currentWay,storyprogress);
@@ -115,6 +122,7 @@ void DrawTowns(SpriteBatch sb,float time){
        ttown3.towns.draw(sb);
        ttown4.towns.draw(sb);
        p.drawplayer(sb, time);
+       c.render(sb);
        }
 private void createplayer() {
       Reader reader = null;
@@ -165,27 +173,34 @@ public void moveplayer( float movetime,float time,Vector2 loca) {
                          
                         }
                         
-                        if(p.x == owpathfinding.current.get(currentWay).x && p.y == owpathfinding.current.get(currentWay).y)
-                        currentWay++;
+                        if(p.x == owpathfinding.current.get(currentWay).x && p.y == owpathfinding.current.get(currentWay).y){
+                       
+                            playerlocation pl;
+                        Vector2 vb = new Vector2(owpathfinding.current.get(currentWay).x,owpathfinding.current.get(currentWay).y);
+                         pl = townlocations.get(vb);
+                         System.out.println(pl);
+                         p.setplayerlocation(pl,listeners);
+                           currentWay++; 
                         
                        } 
                         if(p.x == owpathfinding.destination.x && p.y == owpathfinding.destination.y){
+                         
+                         
                          p.resetPlayerstates();
                          owpathfinding.current.clear();
                          currentWay =0;
                          owpathfinding.setdeparture(p.x, p.y);
-                         
-                        p.playerlocation =  townlocations.get(loca);
-                        p.x = Math.round(loca.x);
-                        p.y = Math.round(loca.y);
+                        
+                      //  p.x = Math.round(loca.x);
+                      //  p.y = Math.round(loca.y);
                       
                         
                         buidworldmenu();
-                        p.pstate = p.pstate.waiting;
+                        p.pstate = p.pstate.overworld;
                         p.isMoving = false;
                         
                       
-                   } movetime = time; 
+                   }} movetime = time; 
     }
 private void buidworldmenu() {
                       worldmenu.buildmenu(rec.x,rec.y,playerlocation);
@@ -238,4 +253,18 @@ public void setStoryprogress(int i){
        
        
  }
+
+    @Override
+    public void daypassed(calendarEvent e) {
+       }
+
+    @Override
+    public void monthpassed(calendarEvent e) {
+        }
+            public synchronized void AddstoryListener(calendarListener e ){
+            listeners.add(e);
+            }
+            public synchronized void RemovestoryListener(calendarListener e){
+            listeners.remove(e);
+            }
 }

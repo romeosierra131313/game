@@ -73,28 +73,31 @@ public class shamballa extends ApplicationAdapter implements InputProcessor{
                  
                 overworldtm = new TmxMapLoader().load("ov.tmx");
                 board = new TmxMapLoader().load("board.tmx");
-
+                boardtmr = new OrthogonalTiledMapRenderer(board); 
+                worldtmr = new OrthogonalTiledMapRenderer(overworldtm);
+                
+                
                 cam = new OrthographicCamera(); // set 0,0 to bottom left 
                 cam.setToOrtho(false,worldheight* Gdx.graphics.getWidth()/
                                Gdx.graphics.getHeight(),720);  // turn it right side up
-                
                 cam.update();
               
                 InputMultiplexer im = new InputMultiplexer(this,stage);
                 Gdx.input.setInputProcessor(im); 
+                
+                
                 overworld = new overworld(cam,overworldtm,stage,skin,im); 
                 overworld.setStoryprogress(0);
                 
-               // 
+               
                 sb = new SpriteBatch();
-                boardtmr = new OrthogonalTiledMapRenderer(board); 
-                worldtmr = new OrthogonalTiledMapRenderer(overworldtm);
+                
          
         
     }
  
     public void Resize(int height,int width){
-          //  cam.setToOrtho(false,worldheight* Gdx.graphics.getWidth()/Gdx.graphics.getHeight(),720);   
+           
             sb.setProjectionMatrix(cam.combined);
             cam.update();
     }    
@@ -117,7 +120,7 @@ public class shamballa extends ApplicationAdapter implements InputProcessor{
                 sb.setProjectionMatrix(cam.combined);
                
                     sb.begin();
-                      
+                     
                        if (overworld.p.pstate == overworld.p.pstate.overworld ||
                            overworld.p.pstate == overworld.p.pstate.waiting ){
                            overworld.DrawTowns(sb,time);
@@ -204,7 +207,7 @@ public class shamballa extends ApplicationAdapter implements InputProcessor{
     @Override
     public boolean touchDown(int i, int i1, int i2, int i3) {
                stage.clear();
-              // Gdx.input.setInputProcessor(overworld.worldmenu.stage);
+              
                Vector2 v2 = new Vector2();
               
                Vector3 touchPos = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
@@ -216,7 +219,7 @@ public class shamballa extends ApplicationAdapter implements InputProcessor{
                paths.add(v2);
 
 
-              for(Rectangle r : overworld.townrec ){                         
+              for(Rectangle r : overworld.townrec ){                                          
                if(r.contains(touchPos.x, touchPos.y)){
                 loca.x = r.x;
                 loca.y = r.y;
