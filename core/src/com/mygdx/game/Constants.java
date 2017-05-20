@@ -5,10 +5,6 @@
  */
 package com.mygdx.game;
 
-import com.badlogic.gdx.math.Vector2;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
 /**
  *
  * @author Stefan
@@ -23,9 +19,10 @@ public class Constants {
    
    
    public enum state{loading,menu,help,info,overworld,game} 
-   public enum gameplace{menu,overworld}
+ 
    public enum playerlocation{Maki,jinku,testtown1,ttown2,ttown3,ttown4}
-   public enum playerstate{waiting,moving,inbattle,intown}
+   public enum gamestate{waiting,inbattle,overworld,intown}
+   public enum intownstate{board,market,team,system,exit}
    public enum playermovingdir{north,south,east,west,non}
      
 
